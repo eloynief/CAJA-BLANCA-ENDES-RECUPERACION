@@ -7,33 +7,34 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class SumaNumerosTest {
 
 	@ParameterizedTest
-	void testPrimerCamino(int num,int salida) {
+	@MethodSource("caminos")
+	void testCaminos(int num,int salida) {
 		
-		//el code no tiene constructor 
-		
-		
+		SumaNumeros sumanumeros= new SumaNumeros();
 		
 		//se llama al sumaNumeros de la clase de SumaNumeros
+		int recoge= sumanumeros.sumaNumeros(num);
+		
 		
 		//se mira el valor
-		
+		assertEquals(salida,recoge);
 		
 		
 	}
 	
 	
-	private static Stream<Arguments> primerCamino(){
+	private static Stream<Arguments> caminos(){
 		return Stream.of(
-				Arguments.of(null)
-				
-				
-				
+				Arguments.of(2,2),
+				Arguments.of(1,0),
+				Arguments.of(-1,0),
+				Arguments.of(4,6)
 				);
-		
 		
 	}
 	
